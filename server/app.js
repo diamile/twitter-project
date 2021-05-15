@@ -8,10 +8,13 @@ const errorHandler = require('errorhandler');
 const coookiParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session)
+require('dotenv').config()
+
+console.log(process.env.NODE_ENV)
 
 
 const app = express();
-
+module.exports = app;
 app.set('views',path.join(__dirname,'views'));
 app.set('views','ejs');
 
@@ -51,6 +54,6 @@ app.use((err,req,res,next)=>{
 })
 
 
-const port = process.env.PORT || 3001;
+//const port = process.env.PORT || 3001;
 
-app.listen(port,()=>{console.log(`server running on ${port}`)});
+//app.listen(port,()=>{console.log(`server running on ${port} in ${process.env.NODE_ENV}`)});
