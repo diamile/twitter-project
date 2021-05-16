@@ -32,14 +32,7 @@ exports.getWeets = (req,res,next)=>{
     res.cookie('signedCookie','polo',{signed:true});
     //console.log(req.signedCookies)
     //console.log('req.session',req.session.id)
-    if(req.session.views){
-      req.session.views +=1;
-      
-    }else{
-      req.session.views = 1
-    }
-
-    console.log(req.session)
+ 
     res.status(200).json(response)
   }).catch((err)=>{
     //res.status(400).json(err)

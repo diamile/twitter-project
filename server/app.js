@@ -41,9 +41,14 @@ app.use(index);
 //app.use(errorHandler());
 
 app.use(express.static(path.join(__dirname, "../client-build")));
-app.get("*", (req, res) => {
-    console.log('suis la');
-    res.sendFile(path.join(__dirname, "../client-build/index.html"));
+app.get("*", async (req, res,next) => {
+    try{
+        console.log('suis la');
+        res.sendFile(path.join(__dirname, "../client-build/index.html"));
+    }catch(err){
+        next(err)
+    }
+    
 });
 
 app.use((err,req,res,next)=>{
